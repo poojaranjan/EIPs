@@ -93,8 +93,13 @@
     {% endif %}
   {% endif %}
 
+  {% assign h_tag = _hAttrToStrip %}
+  {% if headerLevel == 3 %}
+    {% assign h_tag = h_tag | replace: '>', ' style="color: #6b7280;">' %}
+  {% endif %}
+    
   {% capture new_heading %}
-    <h{{ _hAttrToStrip }}
+    <h{{ h_tag }}
       {{ include.bodyPrefix }}
       {% if beforeHeading %}
         {{ anchor }}{{ header }}
